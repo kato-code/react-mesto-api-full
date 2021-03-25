@@ -50,28 +50,6 @@ const deleteCard = (req, res, next) => {
       next(error);
     });
 };
-// const deleteCard = (req, res, next) => {
-//   Card.findById(req.params.cardId)
-//     .catch(() => {
-//       throw new NotFoundError('Карточка с таким id не найдена');
-//     })
-//     .then((card) => {
-//       if (req.user._id === card.owner.toString()) {
-//         Card.findByIdAndRemove({ _id: card._id })
-//           .then(() => {
-//             res.status(200).send(card);
-//           })
-//           .catch(next);
-//       }
-//       throw new AuthorizationError('Нельзя удалять карточки других пользователей');
-//     })
-//     .catch((error) => {
-//       if (error.name === 'CastError') {
-//         throw new BadRequestError('Карточка с таким id не найдена');
-//       }
-//       next(error);
-//     });
-// };
 
 // поставить лайк
 const likeCard = (req, res, next) => {
