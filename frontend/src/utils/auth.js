@@ -1,5 +1,6 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'http://api.project.mesto.nomoredomains.icu';
 
+// регистрация юзера
 export function register(email, password) {
     return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
@@ -21,6 +22,7 @@ export function register(email, password) {
         })
 };
 
+// авторизация юзера
 export function login(email, password) {
     return fetch(`${BASE_URL}/signin`, {
         method: 'POST',
@@ -42,6 +44,7 @@ export function login(email, password) {
         });
 };
 
+// обработка токена
 export function getToken(token) {
     return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',

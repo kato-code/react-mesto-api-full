@@ -12,6 +12,7 @@ class Api {
         return Promise.reject(`Ошибка: ${res.status}`)
     }
 
+    // получить данные юзера
     getUserData() {
         return fetch(`${this._url}/users/me`, {
             method: "GET",
@@ -20,6 +21,7 @@ class Api {
         .then(this.statusResponse)
     }
 
+    // получить все карточки
     getInitialCards() {
         return fetch(`${this._url}/cards`, {
             method: "GET",
@@ -28,6 +30,7 @@ class Api {
         .then(this.statusResponse)
     }
 
+    // обновить данные юзера
     updateUserData(data) {
         return fetch(`${this._url}/users/me`, {
             method: "PATCH",
@@ -40,6 +43,7 @@ class Api {
         .then(this.statusResponse)
     }
     
+    // добавить карточку
     addNewPlace(data) {
         return fetch(`${this._url}/cards`, {
             method: "POST",
@@ -52,6 +56,7 @@ class Api {
         .then(this.statusResponse)
     }
 
+    // удалить карточку
     deleteCard(_id) {
         return fetch(`${this._url}/cards/${_id}`, {
             method: "DELETE",
@@ -60,6 +65,7 @@ class Api {
         .then(this.statusResponse)
     }
 
+    // обработка лайка
     putLike(card, isLiked) {
         return fetch(`${this._url}/cards/likes/${card}`, {
             method: isLiked ? "DELETE" : "PUT",
@@ -68,6 +74,7 @@ class Api {
         .then(this.statusResponse)
     }
 
+    // обновить аватар
     updateUserAvatar(data) {
         return fetch(`${this._url}/users/me/avatar`, {
             method: "PATCH",
@@ -81,10 +88,11 @@ class Api {
 }
 
 const api = new Api ({
-    url: "https://mesto.nomoreparties.co/v1/cohort-18",
+    url: "http://api.project.mesto.nomoredomains.icu",
     headers: {
-        authorization: "ee7d3d7a-088a-4faf-a6a4-125e05d2a819",
-        "Content-Type": "application/json"
+        'Accept': 'application/json',
+        "Content-Type": "application/json",
+        // "Authorization": `Bearer ${localStorage.getItem('token')}`
     }
 });
 
