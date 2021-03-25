@@ -1,4 +1,6 @@
 /* eslint-disable consistent-return */
+require('dotenv').config();
+
 const { NODE_ENV, JWT_SECRET } = process.env;
 const jwt = require('jsonwebtoken');
 const BadRequestError = require('../errors/BadRequestError.js');
