@@ -1,0 +1,5 @@
+.button_type_like-card-active {
+    opacity: 1;
+    background: url(../../../images/active-like-icon.svg) center no-repeat;
+    background-size: contain;
+}

@@ -1,0 +1,9 @@
+@media screen and (max-width: 768px) and (min-width: 320px) {
+    .button_type_close-popup-gallery {
+        width: 40px;
+        height: 40px;
+
+        top: -31px;
+        right: -31px;
+    }
+}

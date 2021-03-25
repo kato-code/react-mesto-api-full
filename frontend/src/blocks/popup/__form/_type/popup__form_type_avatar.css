@@ -1,0 +1,9 @@
+.popup__form_type_avatar {
+    margin: 224px 425px;
+}
+
+@media screen and (max-width: 1279px) and (min-width: 320px) {
+    .popup__form_type_avatar {
+        margin: auto;
+    }
+}

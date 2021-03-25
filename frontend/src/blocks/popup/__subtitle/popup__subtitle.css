@@ -1,0 +1,19 @@
+.popup__subtitle {
+    padding: 0 0 12px 0;
+
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #000000;
+
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.popup__subtitle:last-of-type {
+    margin-bottom: 0;
+}

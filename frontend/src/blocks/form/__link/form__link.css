@@ -1,0 +1,11 @@
+.form__link {
+    margin-left: 6px;
+    text-decoration: none;
+
+    color: #ffffff;
+}
+
+.form__link:hover {
+    opacity: 0.6;
+    transition: opacity 0.3s linear;
+}

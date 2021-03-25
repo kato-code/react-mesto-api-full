@@ -1,0 +1,18 @@
+.card__image {
+    width: 282px;
+    height: 282px;
+
+    border-radius: 10px 10px 0 0;
+
+    object-fit: cover;
+}
+
+@media screen and (max-width: 1279px) and (min-width: 320px) {
+    .card__image {
+        width: 100%;
+    }
+}
+
+.card__image:hover {
+    cursor: pointer;
+}

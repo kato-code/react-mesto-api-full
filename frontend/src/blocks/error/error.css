@@ -1,0 +1,26 @@
+.error {
+    height: 27px;
+
+    margin: 5px 0 0;
+
+    font-family: "Inter", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+
+    color: #FF0000;
+
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) and (min-width: 320px) {
+    .error {
+        height: 24px;
+
+        margin: 3px 0 0;
+
+        font-size: 9px;
+        line-height: 11px;
+    }
+}

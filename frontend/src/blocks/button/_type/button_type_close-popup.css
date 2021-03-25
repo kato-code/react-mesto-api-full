@@ -1,0 +1,25 @@
+.button_type_close-popup {
+    width: 47px;
+    height: 46px;
+
+    position: absolute;
+    top: -41px;
+    right: -39px;
+
+    background: rgba(255, 255, 255, 0) url(../../../images/close-icon.svg) no-repeat;
+    background-position: center;
+
+    border: none;
+}
+
+@media screen and (max-width: 768px) and (min-width: 320px) {
+    .button_type_close-popup {
+        width: 36px;
+        height: 36px;
+
+        top: -49px;
+        right: 0;
+
+        background-size: cover;
+    }
+}
