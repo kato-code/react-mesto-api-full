@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://project.mesto.nomoredomains.icu';
+export const BASE_URL = 'https://project.mesto.nomoredomains.icu';
 
 // регистрация юзера
 export function register(email, password) {

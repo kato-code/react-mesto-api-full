@@ -88,7 +88,7 @@ class Api {
 }
 
 const api = new Api ({
-    url: "http://project.mesto.nomoredomains.icu",
+    url: "https://project.mesto.nomoredomains.icu",
     headers: {
         'Accept': 'application/json',
         "Content-Type": "application/json",
