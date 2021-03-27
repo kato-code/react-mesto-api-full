@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 
 const { createUser, loginUser } = require('./controllers/users.js');
@@ -29,11 +29,26 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 })
   .then(() => console.log('Connected to DB'));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 // логгер запросов
 app.use(requestLogger);
+
+app.disable('x-powered-by');
+
+app.use((req, res, next) => {
+  res.set({
+    'Access-Control-Allow-Origin': 'https://project.mesto.nomoredomains.icu',
+    'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+    'Access-Control-Allow-Credentials': true,
+    'Content-Security-Policy': 'default-src "self"; img-src *',
+    'Referrer-Policy': 'no-referrer',
+  });
+
+  next();
+});
 
 // краш тест
 app.get('/crash-test', () => {
