@@ -1,5 +1,13 @@
 export const BASE_URL = 'https://project.mesto.nomoredomains.icu';
 
+const statusResponse = (res) => {
+    if(res.ok) {
+        return res.json();
+    } 
+
+    return Promise.reject(`Ошибка: ${res.status}`)
+}
+
 // регистрация юзера
 export function register(email, password) {
     return fetch(`${BASE_URL}/signup`, {
@@ -14,11 +22,7 @@ export function register(email, password) {
         })
     })
         .then((res) => {
-            if(res.ok) {
-                return res.json();
-            } 
-
-            return Promise.reject(`Ошибка: ${res.status}`)
+            statusResponse(res)
         })
 };
 
@@ -36,12 +40,8 @@ export function login(email, password) {
         })
     })
         .then((res) => {
-            if(res.ok) {
-                return res.json();
-            } 
-
-            return Promise.reject(`Ошибка: ${res.status}`)
-        });
+            statusResponse(res)
+        })
 };
 
 // обработка токена
@@ -54,12 +54,8 @@ export function getToken(token) {
         },
     })
         .then((res) => {
-            if(res.ok) {
-                return res.json();
-            } 
-
-            return Promise.reject(`Ошибка: ${res.status}`)
-        });
+            statusResponse(res)
+        })
 };
 
 
