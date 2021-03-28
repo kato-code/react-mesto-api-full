@@ -29,6 +29,16 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 })
   .then(() => console.log('Connected to DB'));
 
+const allowedCors = [
+  'https://project.mesto.nomoredomains.icu',
+  'https://api.project.mesto.nomoredomains.icu',
+  'http://localhost:3001',
+];
+
+app.use(cors({
+  origin: allowedCors,
+}));
+
 app.use(express.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 
