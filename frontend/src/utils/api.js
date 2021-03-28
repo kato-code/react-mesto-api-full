@@ -80,8 +80,15 @@ class Api {
     }
 }
 
+// const api = new Api ({
+//     url: "https://project.mesto.nomoredomains.icu",
+//     headers: {
+//         authorization: `Bearer ${localStorage.getItem('token')}`,
+//         "Content-Type": "application/json"
+//     }
+// });
 const api = new Api ({
-    url: "https://project.mesto.nomoredomains.icu",
+    url: "http://localhost:3001",
     headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
         "Content-Type": "application/json"

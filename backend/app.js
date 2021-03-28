@@ -15,11 +15,11 @@ const routesUsers = require('./routes/users.js');
 const routesCards = require('./routes/cards.js');
 const routeNotFound = require('./routes/routeNotFound.js');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const app = express();
 
 // cors
-app.use(cors());
+// app.use(cors());
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
@@ -29,15 +29,15 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 })
   .then(() => console.log('Connected to DB'));
 
-const allowedCors = [
-  'https://project.mesto.nomoredomains.icu',
-  'https://api.project.mesto.nomoredomains.icu',
-  'http://localhost:3001',
-];
+const optionsCors = {
+  origin: [
+    'https://project.mesto.nomoredomains.icu',
+    'https://api.project.mesto.nomoredomains.icu',
+    'http://localhost:3000',
+  ],
+};
 
-app.use(cors({
-  origin: allowedCors,
-}));
+app.use('*', cors(optionsCors)); // Подключаем первой миддлварой
 
 app.use(express.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
