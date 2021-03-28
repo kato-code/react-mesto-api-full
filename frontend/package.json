@@ -2,7 +2,6 @@
   "name": "mesto-react",
   "author": "Katya Ksenofontova",
   "version": "0.1.0",
-  "description": "https://github.com/kato-code/mesto-react.git",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
