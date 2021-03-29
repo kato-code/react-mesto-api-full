@@ -7,6 +7,6 @@
 
 Адресс/домен:
 
-IP: 178.154.213.230 
-Frontend: project.mesto.nomoredomains.icu 
-Backend: api.project.mesto.nomoredomains.icu
+IP: 178.154.213.230  
+Frontend: project.mesto.nomoredomains.icu  
+Backend: api.project.mesto.nomoredomains.icu 
