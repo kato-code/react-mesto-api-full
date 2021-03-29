@@ -3,7 +3,7 @@ const Card = require('../models/card.js');
 
 const BadRequestError = require('../errors/BadRequestError.js');
 const NotFoundError = require('../errors/NotFoundError.js');
-const AuthorizationError = require('../errors/AuthorizationError.js');
+const ForbiddenError = require('../errors/ForbiddenError.js');
 
 // получить список карточек
 const getCards = (req, res, next) => {
@@ -35,7 +35,7 @@ const deleteCard = (req, res, next) => {
         throw new NotFoundError('Запрашиваемые данные не найдены');
       }
       if (card.owner.toString() != req.user._id) {
-        throw new AuthorizationError('Недостаточно прав');
+        throw new ForbiddenError('Недостаточно прав');
       }
       Card.deleteOne(card)
         .then(() => {
@@ -47,7 +47,8 @@ const deleteCard = (req, res, next) => {
           }
           next(error);
         });
-    });
+    })
+    .catch(next);
 };
 
 // поставить лайк

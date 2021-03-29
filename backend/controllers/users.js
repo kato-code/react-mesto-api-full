@@ -57,32 +57,23 @@ const getUserProfileById = (req, res, next) => {
 
 // создать нового юзера
 const createUser = (req, res, next) => {
-  const {
-    name, about, avatar, email, password,
-  } = req.body;
-
-  User.findOne({ email })
-    .then((data) => {
-      if (data) {
-        throw new ConflictError('Пользователь уже существует');
-      }
-      return bcrypt.hash(password, 10)
-        .then((hash) => User.create({
-          name, about, avatar, email, password: hash,
-        }))
-        .then((user) => res.status(200).send({
-          name: user.name,
-          about: user.about,
-          avatar: user.avatar,
-          email: user.email,
-        }))
+  bcrypt.hash(req.body.password, 10)
+    .then((hash) => {
+      User.create({
+        email: req.body.email,
+        password: hash,
+      })
+        .then((user) => {
+          res.send({ user });
+        })
         .catch((error) => {
           if (error.name === 'ValidationError') {
-            throw new BadRequestError('Введены некорректные данные');
+            next(new BadRequestError('Введены некорректные данные'));
           }
-          next(error);
+          next(new ConflictError('Пользователь уже существует'));
         });
-    });
+    })
+    .catch(next);
 };
 
 // обновить информацию в профиле юзера
@@ -135,15 +126,13 @@ const loginUser = (req, res, next) => {
 
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      if (!user) {
-        throw new UnauthorizedError('Пользователь не зарегистрирован');
-      }
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
       res.send({ token });
     })
-    .catch((error) => {
-      next(error);
-    });
+    .catch(() => {
+      throw new UnauthorizedError('Пользователь не зарегистрирован');
+    })
+    .catch(next);
 };
 
 module.exports = {

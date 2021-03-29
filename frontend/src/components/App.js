@@ -71,7 +71,7 @@ function App() {
                         history.push('/');
                     }
                 })
-                .catch((error) => console.log(`Ошибка при запросе токена: ${error.message}`))
+                .catch((error) => console.log(`Ошибка при запросе токена: ${error}`))
         }
     }
 
@@ -98,8 +98,8 @@ function App() {
                 }
             })
             .catch((error) => {
-                console.log(`Ошибка при авторизации: ${error.message}`)
                 handleInfoTooltip(false)
+                console.log(`Ошибка при авторизации: ${error}`)
             })
     }
 
@@ -113,8 +113,8 @@ function App() {
                 } 
             })
             .catch((error) => {
-                console.log(`Ошибка при регистрации: ${error.message}`)
                 handleInfoTooltip(false)
+                console.log(`Ошибка при регистрации: ${error}`)
             })
     }
 
