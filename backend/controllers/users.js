@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -20,14 +21,14 @@ const getUsers = (req, res, next) => {
 
 // получить информацию о текущем юзере
 const getUserProfile = (req, res, next) => {
-  const userId = req.user._id;
+  const id = req.user._id;
 
-  User.findById(userId)
+  User.findById(id)
     .then((user) => {
       if (!user) {
         throw new NotFoundError('Пользователь с таким id не найден');
       }
-      res.status(200).send({ data: user });
+      res.status(200).send(user);
     })
     .catch((error) => {
       if (error.name === 'CastError') {
@@ -39,14 +40,12 @@ const getUserProfile = (req, res, next) => {
 
 // получить информацию о юзере по id
 const getUserProfileById = (req, res, next) => {
-  const { userId } = req.params;
-
-  User.findById(userId)
+  User.findById({ _id: req.params.id })
     .then((user) => {
       if (!user) {
         throw new NotFoundError('Пользователь с таким id не найден');
       }
-      res.status(200).send({ data: user });
+      res.status(200).send(user);
     })
     .catch((error) => {
       if (error.name === 'CastError') {
@@ -92,10 +91,10 @@ const updateUserProfile = (req, res, next) => {
 
   return User.findByIdAndUpdate(req.user._id, { name, about }, { new: true, runValidators: true })
     .then((user) => {
-      if (user === null) {
+      if (!user) {
         throw new NotFoundError('Пользователь с таким id не найден');
       }
-      res.status(200).send({ data: user });
+      res.status(200).send(user);
     })
     .catch((error) => {
       if (error.name === 'CastError') {
@@ -117,7 +116,7 @@ const updateUserAvatar = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Пользователь с таким id не найден');
       }
-      res.status(200).send({ data: user });
+      res.status(200).send(user);
     })
     .catch((error) => {
       if (error.name === 'CastError') {

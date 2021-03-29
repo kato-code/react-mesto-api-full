@@ -1,7 +1,6 @@
 /* eslint-disable eqeqeq */
 const Card = require('../models/card.js');
 
-// const { BadRequestError, NotFoundError, AuthorizationError } = require('../errors');
 const BadRequestError = require('../errors/BadRequestError.js');
 const NotFoundError = require('../errors/NotFoundError.js');
 const AuthorizationError = require('../errors/AuthorizationError.js');
@@ -35,19 +34,19 @@ const deleteCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Запрашиваемые данные не найдены');
       }
-      if (card.owner != req.user._id) {
+      if (card.owner.toString() != req.user._id) {
         throw new AuthorizationError('Недостаточно прав');
       }
-      return Card.findByIdAndDelete(req.params._id);
-    })
-    .then(() => {
-      res.status(200).send({ messages: 'Карточка удалена' });
-    })
-    .catch((error) => {
-      if (error.name === 'CastError') {
-        throw new BadRequestError('Карточка с таким id не найдена');
-      }
-      next(error);
+      Card.deleteOne(card)
+        .then(() => {
+          res.send({ messages: 'Карточка успешно удалена' });
+        })
+        .catch((error) => {
+          if (error.name === 'CastError') {
+            throw new BadRequestError('Карточка с таким id не найдена');
+          }
+          next(error);
+        });
     });
 };
 

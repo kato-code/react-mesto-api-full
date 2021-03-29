@@ -28,8 +28,6 @@ function Register({ onRegister }) {
                 name="email"
                 id="email"
                 placeholder="Email"
-                minLength="2" 
-                maxLength="40"
                 onChange={handleDataChange}
                 value={data.email || ''}
                 required
@@ -42,8 +40,7 @@ function Register({ onRegister }) {
                 name="password"
                 id="password"
                 placeholder="Пароль"
-                minLength="2" 
-                maxLength="200"
+                minLength="5"
                 onChange={handleDataChange}
                 value={data.password || ''}
                 required

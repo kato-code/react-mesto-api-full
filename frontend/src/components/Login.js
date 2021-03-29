@@ -29,8 +29,6 @@ function Login({ onLogin }) {
                 id="email"
                 value={data.email || ''}
                 placeholder="Email"
-                minLength="2" 
-                maxLength="40"
                 onChange={handleDataChange}
                 required
             />
@@ -43,8 +41,7 @@ function Login({ onLogin }) {
                 id="password"
                 value={data.password || ''}
                 placeholder="Пароль"
-                minLength="2" 
-                maxLength="200"
+                minLength="5"
                 onChange={handleDataChange}
                 required
             />

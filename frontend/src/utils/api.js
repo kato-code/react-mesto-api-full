@@ -34,7 +34,7 @@ class Api {
             headers: this._headers,
             body: JSON.stringify({
                 name: data.name,
-                about: data.profession
+                about: data.about
             })
         })
         .then(this.statusResponse)
@@ -61,7 +61,7 @@ class Api {
     }
 
     putLike(card, isLiked) {
-        return fetch(`${this._url}/cards/likes/${card}`, {
+        return fetch(`${this._url}/cards/${card}/likes`, {
             method: isLiked ? "DELETE" : "PUT",
             headers: this._headers
         })
@@ -80,18 +80,11 @@ class Api {
     }
 }
 
-// const api = new Api ({
-//     url: "https://project.mesto.nomoredomains.icu",
-//     headers: {
-//         authorization: `Bearer ${localStorage.getItem('token')}`,
-//         "Content-Type": "application/json"
-//     }
-// });
 const api = new Api ({
-    url: "http://localhost:3001",
+    url: "https://api.project.mesto.nomoredomains.icu",
     headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('jwt')}`
     }
 });
 

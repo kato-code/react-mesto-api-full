@@ -16,9 +16,9 @@ router.get('/users', getUsers);
 router.get('/users/me', getUserProfile);
 
 // получить информацию о юзере по id
-router.get('/users/:userId', celebrate({
+router.get('/users/:id', celebrate({
   params: Joi.object().keys({
-    userId: Joi.string().required().length(24).hex(),
+    id: Joi.string().required().length(24).hex(),
   }),
 }), getUserProfileById);
 
@@ -26,7 +26,7 @@ router.get('/users/:userId', celebrate({
 router.patch('/users/me', celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
-    about: Joi.string().min(2).max(30),
+    about: Joi.string().required().min(2).max(30),
   }),
 }), updateUserProfile);
 
