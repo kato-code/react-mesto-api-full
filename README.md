@@ -1,5 +1,5 @@
 # react-mesto-api-full
-Репозиторий для приложения проекта `Mesto` https://project.mesto.nomoredomains.icu, включающий фронтенд и бэкенд части приложения со следующими возможностями:   
+Репозиторий для приложения проекта `Mesto` https://project.mesto.nomoredomains.icu, включающий [фронтенд](https://github.com/kato-code/react-mesto-auth) и [бэкенд](https://github.com/kato-code/express-mesto) части приложения со следующими возможностями:   
   
 * авторизация и регистрация пользователей, 
 * операции с карточками и пользователями. 
